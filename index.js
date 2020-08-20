@@ -89,8 +89,9 @@ function renderResultsToDom(resultsObj) {
   $('.results-list').empty();
   for (let i=0; i<resultsObj.Similar.Results.length; i++) {
     let domNode = `
-    <li><a href='${resultsObj.Similar.Results[i].yUrl}' target='_blank'>${resultsObj.Similar.Results[i].Name}</a></li>
+    <li>${resultsObj.Similar.Results[i].Name}</li>
     <p>${resultsObj.Similar.Results[i].wTeaser}</p>
+    <iframe class="podcast-iframe" src="${resultsObj.Similar.Results[i].yUrl}" target='_blank'></iframe>
     `
     $('.results-list').append(domNode);
   }
