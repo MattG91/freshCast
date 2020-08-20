@@ -9,7 +9,7 @@
   <title>freshCast | Podcast Finder</title>
 </head>
 <body>
-
+<!-- Main header nav -->
   <header>
     <div class="nav-wrapper">
       <div>
@@ -21,31 +21,31 @@
     </div>
     <nav class="nav-list hide center">
       <ul>
-        <li><a>HOME</a></li>
-        <li><a>CONTACT</a></li>
+        <li><a href="#">HOME</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
       </ul>
     </nav>
   </header>
-
+<!-- Landing text and how to use the app -->
   <main>
     <section class="landing-message center">
       <div>
         <h3>What is freshCast for?</h3>
-        <p>freshCast is here to help you find new, fresh podcasts to listen to!</p><br>
+        <p>freshCast is here to help you find new, fresh podcasts to listen to!</p>
         <p>Go ahead and enter a podcast you like below and we'll find some more you might like</p>
       </div>
     </section>
-
+<!-- Area to take user input for search -->
     <section class="user-input-area center">
       <div>
         <label for="userQuery">Podcast</label><br>
           <input id="user-query" type="text" required><br>
         <label for="user-number-results">Number of results</label><br>
-          <input id="user-number-results" type="text" required><br>
+          <input id="user-number-results" type="text" required placeholder="10"><br>
         <button id="search-btn" type="submit">Search</button>
       </div>
     </section>
-
+<!-- Where the search results are rendered -->
     <section class="results-area">
       <div>
         <p class="hide error-field center"></p>
