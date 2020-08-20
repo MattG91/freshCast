@@ -49,3 +49,9 @@ header ul li {
 .height-transition-hidden {            
     max-height: 0;            
 }
+
+/*******************************Main header styles  */
+.podcast-iframe {
+  width: 50%;
+  height: 20%;
+}
