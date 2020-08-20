@@ -1,0 +1,51 @@
+/*******************************General page styles  */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: url("img/matt-botsford-OKLqGsCT8qs-unsplash.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.hide {
+  display: none;
+}
+
+.center {
+  justify-content: center;
+  text-align: center;
+}
+
+/*******************************Main header styles  */
+.nav-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.fas{
+  margin: .4em .5em 0 0;
+}
+
+header h1 {
+  margin-left: .7em;
+}
+
+header ul li {
+  list-style: none;
+}
+
+.height-transition {
+    -webkit-transition: max-height 0.5s ease-in-out;
+    -moz-transition: max-height 0.5s ease-in-out;
+    -o-transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
+    overflow-y: hidden;            
+}
+.height-transition-hidden {            
+    max-height: 0;            
+}
