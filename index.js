@@ -10,7 +10,13 @@ function searchResultsHandler() {
     const userResultsNumber = $('#user-number-results').val();
     $('#user-query').val("");
     $('#user-number-results').val("");
-    getSearchResults(userQuery, userResultsNumber);
+    if (userQuery == '' || userResultsNumber == '') {
+      $('.results-list').empty();
+      $('.error-field').text('Plese fill out both search fields').removeClass('hide');
+    } else {
+      $('.error-field').text('').addClass('hide');
+      getSearchResults(userQuery, userResultsNumber);
+    }
   });
 }
 
@@ -42,9 +48,6 @@ function formatQueryParameters(params) {
      
 function getSearchResults(query, number) {
   console.log(query);
-  if (query == '' || number == '') {
-    alert('Please fill out both search fields')
-  } else {
     let userSearch = 'q=' + query.split(' ').join("+") + '&';
     let params = {
       type: 'podcast',
@@ -61,12 +64,13 @@ function getSearchResults(query, number) {
     }).done(function(output) {
       console.log(output);
       if (output.Similar.Results.length === 0) {
-        alert('Looks like we couldent find your podcast:( Check your spelling or try another!')
+        $('.results-list').empty();
+        $('.error-field').text('Looks like we couldent find your podcast :( Check your spelling or try another!').removeClass('hide');
       } else {
+        $('.error-field').text('').addClass('hide');
         renderResultsToDom(output);
       }
-    })
-  }
+  })
 } 
   // let url = formatQueryUrl(query, number);
   // fetch(url,)
