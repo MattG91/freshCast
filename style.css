@@ -20,6 +20,10 @@ html {
   text-align: center;
 }
 
+body {
+  color: white;
+}
+
 /*******************************Main header styles  */
 .nav-wrapper {
   display: flex;
@@ -33,6 +37,7 @@ html {
 
 header h1 {
   margin-left: .7em;
+  font-size: 2.5em;
 }
 
 header ul li {
@@ -50,8 +55,27 @@ header ul li {
     max-height: 0;            
 }
 
+header a {
+  color: white;
+}
+
 /*******************************Main header styles  */
 .podcast-iframe {
   width: 50%;
   height: 20%;
+}
+
+.episode-container {
+  border: solid white 3px;
+  border-radius: 5px;
+  padding: .5em .5em;
+  margin: .5em .3em;
+}
+
+.episode-container li {
+  list-style-type: none;
+}
+
+.results-list {
+  padding-left: 0;
 }

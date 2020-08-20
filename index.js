@@ -2,15 +2,18 @@
 let searchEndpoint = 'https://tastedive.com/api/similar';
 const apiKey = '382162-freshCas-XQFB23BA'
 
+
+
+
+
 // Handler functions
 function searchResultsHandler() {
   $('#search-btn').on('click', e => {
     e.preventDefault();
     const userQuery = $('#user-query').val();
-    const userResultsNumber = $('#user-number-results').val();
-    $('#user-query').val("");
-    $('#user-number-results').val("");
-    if (userQuery == '' || userResultsNumber == '') {
+    const userResultsNumber = $('#user-number-results').val() || '10';
+    clearInputs();
+    if (!userQuery) {
       $('.results-list').empty();
       $('.error-field').text('Plese fill out both search fields').removeClass('hide');
     } else {
@@ -19,12 +22,6 @@ function searchResultsHandler() {
     }
   });
 }
-
-
-
-
-
-
 
 
 
@@ -45,8 +42,41 @@ function formatQueryParameters(params) {
   );
   return queryItems.join("&");
 }
-     
-function getSearchResults(query, number) {
+
+function clearInputs() {
+  $('#user-query').val("");
+  $('#user-number-results').val("");
+}
+
+
+function renderResultsToDom(resultsObj) {
+  $('.results-list').empty();
+  let episodeNodes = [];
+  for (let i = 0; i < resultsObj.Similar.Results.length; i++) {
+    const episode = renderEpisode(resultsObj.Similar.Results[i]);
+    if (episode) {
+      episodeNodes.push(episode);
+    }
+  }
+
+  $('.results-list').append(episodeNodes.join(''));
+}
+
+function renderEpisode(episode) {
+  if (!episode.wTeaser && !episode.yUrl) {
+    return null;
+  }
+
+  return `
+    <div class='episode-container'>
+      <li>${episode.Name}</li>
+      <p>${episode.wTeaser}</p>
+      <iframe class="podcast-iframe" src="${episode.yUrl}" target='_blank'></iframe>
+    </div>
+  `;
+}
+
+function getSearchResults(query, number = 10) {
   console.log(query);
     let userSearch = 'q=' + query.split(' ').join("+") + '&';
     let params = {
@@ -72,38 +102,6 @@ function getSearchResults(query, number) {
       }
   })
 } 
-  // let url = formatQueryUrl(query, number);
-  // fetch(url,)
-  // .then(response => {
-  //   if (response.ok) {
-  //     console.log(response.json());
-  //   }
-  // })
-
-
-// function formatQueryUrl(query, number) {
-//   let userSearch = query.split(' ').join("+");
-//   let userUrl = searchEndpoint + `q=${userSearch}` + `&info=1` +  `&type=podcast` + `&limit=${number}` + `&k=${apiKey}`;
-//   console.log(userUrl);
-//   return userUrl;
-// }
-
-
-function renderResultsToDom(resultsObj) {
-  $('.results-list').empty();
-  for (let i=0; i<resultsObj.Similar.Results.length; i++) {
-    let domNode = `
-    <li>${resultsObj.Similar.Results[i].Name}</li>
-    <p>${resultsObj.Similar.Results[i].wTeaser}</p>
-    <iframe class="podcast-iframe" src="${resultsObj.Similar.Results[i].yUrl}" target='_blank'></iframe>
-    `
-    $('.results-list').append(domNode);
-  }
-}
-
-
-
-
 
 
 
