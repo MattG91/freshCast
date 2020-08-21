@@ -1,5 +1,5 @@
 // Global variables
-let searchEndpoint = 'https://tastedive.com/api/similar';
+const searchEndpoint = 'https://tastedive.com/api/similar';
 const apiKey = '382162-freshCas-XQFB23BA'
 
 
@@ -8,21 +8,14 @@ const apiKey = '382162-freshCas-XQFB23BA'
 
 // Handler functions
 function searchResultsHandler() {
-  $('#search-btn').on('click', e => {
+  $('.input-form').submit(e => {
     e.preventDefault();
     const userQuery = $('#user-query').val();
     const userResultsNumber = $('#user-number-results').val() || '10';
     clearInputs();
-    if (!userQuery) {
-      $('.results-list').empty();
-      $('.error-field').text('Plese fill out both search fields').removeClass('hide');
-    } else {
-      $('.error-field').text('').addClass('hide');
-      getSearchResults(userQuery, userResultsNumber);
-    }
+    getSearchResults(userQuery, userResultsNumber);
   });
 }
-
 
 
 
@@ -51,7 +44,7 @@ function clearInputs() {
 
 function renderResultsToDom(resultsObj) {
   $('.results-list').empty();
-  let episodeNodes = [];
+  const episodeNodes = [];
   for (let i = 0; i < resultsObj.Similar.Results.length; i++) {
     const episode = renderEpisode(resultsObj.Similar.Results[i]);
     if (episode) {
@@ -76,32 +69,31 @@ function renderEpisode(episode) {
   `;
 }
 
-function getSearchResults(query, number = 10) {
-  console.log(query);
-    let userSearch = 'q=' + query.split(' ').join("+") + '&';
-    let params = {
-      type: 'podcast',
-      limit: number,
-      info: 1,
-      k: apiKey
-    };
+function getSearchResults(query, number = 5) {
+  const userSearch = '?q=' + query.split(' ').join("+") + '&';
+  const params = {
+    type: 'podcast',
+    limit: number,
+    info: 1,
+    k: apiKey
+  };
+  const PROXY = 'https://cors-anywhere.herokuapp.com/';
   
-    let results = $.ajax({
-      url: 'https://tastedive.com/api/similar',
-      data: userSearch + formatQueryParameters(params),
-      dataType: 'jsonp',
-      type: 'GET'
-    }).done(function(output) {
-      console.log(output);
-      if (output.Similar.Results.length === 0) {
-        $('.results-list').empty();
-        $('.error-field').text('Looks like we couldent find your podcast :( Check your spelling or try another!').removeClass('hide');
-      } else {
-        $('.error-field').text('').addClass('hide');
-        renderResultsToDom(output);
-      }
+  fetch(PROXY + searchEndpoint + userSearch + formatQueryParameters(params))
+  .then(rawResponse => {
+    return rawResponse.json();
   })
-} 
+  .then(response => {
+    console.log(response.Similar.Results);
+    if (response.Similar.Results.length === 0) {
+      $('.results-list').empty();
+      $('.error-field').text('Looks like we couldent find your podcast :( Check your spelling and try again!').removeClass('hide');
+    } else {
+      $('.error-field').text('').addClass('hide');
+      renderResultsToDom(response);
+    }
+  })
+}
 
 
 

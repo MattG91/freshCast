@@ -38,11 +38,13 @@
 <!-- Area to take user input for search -->
     <section class="user-input-area center">
       <div>
-        <label for="userQuery">Podcast</label><br>
-          <input id="user-query" type="text" required><br>
-        <label for="user-number-results">Number of results</label><br>
-          <input id="user-number-results" type="text" required placeholder="10"><br>
-        <button id="search-btn" type="submit">Search</button>
+        <form class="input-form">
+          <label for="userQuery">Podcast</label><br>
+            <input id="user-query" type="text" required><br>
+          <label for="user-number-results">Number of results</label><br>
+            <input id="user-number-results" type="text" placeholder="5"><br>
+          <button id="search-btn" type="submit">Search</button>
+        </form>
       </div>
     </section>
 <!-- Where the search results are rendered -->
