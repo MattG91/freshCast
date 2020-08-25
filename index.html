@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
   <script src="https://kit.fontawesome.com/cc6b8c3bb3.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Julius+Sans+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>freshCast | Podcast Finder</title>
 </head>
@@ -13,7 +14,7 @@
   <header>
     <div class="nav-wrapper">
       <div>
-        <h1>freshCast</h1>
+        <h1 id="logo">freshCast</h1>
       </div>
       <div>
         <i class="fas fa-bars fa-3x"></i>
@@ -31,8 +32,10 @@
     <section class="landing-message center">
       <div>
         <h3>What is freshCast for?</h3>
-        <p>freshCast is here to help you find new, fresh podcasts to listen to!</p>
-        <p>Go ahead and enter a podcast you like below and we'll find some more you might like</p>
+        <div class="landing-instructions">
+          <p>freshCast is here to help you find new, fresh podcasts to listen to!</p>
+          <p>Go ahead and enter a podcast you like below and we'll find some more you might like</p>
+        </div>
       </div>
     </section>
 <!-- Area to take user input for search -->
@@ -44,6 +47,7 @@
           <label for="user-number-results">Number of results</label><br>
             <input id="user-number-results" type="text" placeholder="5"><br>
           <button id="search-btn" type="submit">Search</button>
+          <button class="hide" id="instructions-btn" type="button">Instructions</button>
         </form>
       </div>
     </section>

@@ -41,6 +41,11 @@ function clearInputs() {
   $('#user-number-results').val("");
 }
 
+function showInstructions() {
+  $('#instructions-btn').on('click', () => {
+    $('.landing-message').toggleClass('hide');
+  })
+}
 
 function renderResultsToDom(resultsObj) {
   $('.results-list').empty();
@@ -62,9 +67,13 @@ function renderEpisode(episode) {
 
   return `
     <div class='episode-container'>
-      <li>${episode.Name}</li>
-      <p>${episode.wTeaser}</p>
-      <iframe class="podcast-iframe" src="${episode.yUrl}" target='_blank'></iframe>
+      <div class='flex-item'>
+        <li>${episode.Name}</li>
+        <p>${episode.wTeaser}</p>
+      </div
+      <div class='flex-item yt-frame'>
+        <iframe class="podcast-iframe" src="${episode.yUrl}" target='_blank'></iframe>
+      </div>
     </div>
   `;
 }
@@ -90,6 +99,8 @@ function getSearchResults(query, number = 5) {
       $('.error-field').text('Looks like we couldent find your podcast :( Check your spelling and try again!').removeClass('hide');
     } else {
       $('.error-field').text('').addClass('hide');
+      $('.landing-message').addClass('hide');
+      $('#instructions-btn').show();
       renderResultsToDom(response);
     }
   })
@@ -103,6 +114,7 @@ function getSearchResults(query, number = 5) {
 function startApp() {
   displayNavList();
   searchResultsHandler();
+  showInstructions();
 }
 
 $(startApp);
