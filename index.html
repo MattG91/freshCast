@@ -11,55 +11,51 @@
 </head>
 <body>
 <!-- Main header nav -->
-    <header>
-      <div class="nav-wrapper">
-          <h1 class="logo">FRESHCAST</h1>
-        <div>
-          <i class="fas fa-bars fa-3x"></i>
-        </div>
+  <header>
+    <div class="nav-wrapper">
+        <h1 class="logo">FRESHCAST</h1>
+      <div>
+        <i class="fas fa-bars fa-3x"></i>
       </div>
-      <nav class="nav-list hide center">
-        <ul>
-          <li><a href="#">HOME</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
-        </ul>
-      </nav>
-    </header>
+    </div>
+    <nav class="nav-list hide center">
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
 <!-- Landing text and how to use the app -->
-    <main>
-      <section class="landing-message center">
-        <div>
-          <h3 class="instructions-header">What is FRESHCAST for?</h3>
-          <div class="landing-instructions">
-            <p>FRESHCAST is here to help you find new, fresh podcasts to listen to!</p>
-            <p>Go ahead and enter a podcast you like below and we'll find some more you might like.</p>
-          </div>
-        </div>
-      </section>
+  <main>
+    <section class="landing-message center">
+      <h3 class="instructions-header">What is FRESHCAST for?</h3>
+      <div class="landing-instructions">
+        <p>FRESHCAST is here to help you find new, fresh podcasts to listen to!</p>
+        <p>Go ahead and enter a podcast you like below and we'll find some more you might like.</p>
+      </div>
+    </section>
 <!-- Area to take user input for search -->
-      <section class="user-input-area center">
-          <form class="input-form">
-            <label for="user-query">Podcast</label><br>
-              <input id="user-query" type="text" required><br>
-            <label for="user-number-results">Number of results</label><br>
-              <input id="user-number-results" type="text" placeholder="5"><br>
-            <button class="search-btn btn" type="submit">Search</button>
-            <button class="hide btn" id="instructions-btn" type="button">Instructions</button>
-          </form>
-      </section>
+    <section class="user-input-area center">
+        <form class="input-form">
+          <label for="user-query">Podcast</label><br>
+            <input id="user-query" type="text" required><br>
+          <label for="user-number-results">Number of results</label><br>
+            <input id="user-number-results" type="text" placeholder="5"><br>
+          <button class="search-btn btn" type="submit">Search</button>
+          <button class="hide btn" id="instructions-btn" type="button">Instructions</button>
+        </form>
+    </section>
 <!-- Where the search results are rendered -->
-      <section class="results-area">
-        <div>
-          <p class="hide error-field center"></p>
-          <ul class="results-list">
-            
-          </ul>
-        </div>
-      </section>
-    </main>
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="index.js"></script>
+    <section class="results-area">
+        <p class="hide error-field center"></p>
+        <ul class="results-list">
+          
+        </ul>
+    </section>
+  </main>
   
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+
 </body>
 </html>

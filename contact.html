@@ -12,46 +12,31 @@
 <body>
 <!-- Main nav header -->
   <header>
-      <div class="nav-wrapper">
-          <h1 class="logo">FRESHCAST</h1>
-
-        <div>
-          <i class="fas fa-bars fa-3x"></i>
-        </div>
+    <div class="nav-wrapper">
+        <h1 class="logo">FRESHCAST</h1>
+      <div>
+        <i class="fas fa-bars fa-3x"></i>
       </div>
-      <nav class="nav-list hide center">
-        <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="#">CONTACT</a></li>
-        </ul>
-      </nav>
-    </header>
-  
+    </div>
+    <nav class="nav-list hide center">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
 <!--form for subbmitting email and comments to personal email-->
-  <main>
-
-  </main>
-
   <aside>
     <form action="https://formspree.io/xeqrvarw" method="POST" class="center">
       <fieldset>
-        <legend>Feedback Form</legend>
+        <legend class="feedback-header">Feedback Form</legend>
           <div class="group">
-
-            <div class="item">
-              <label for="name" class="feedback-label">Name</label><br>
-                <input type="text" id="name" name="name"><br>
-              <label for="email" class="feedback-label">Email</label><br>
-                <input type="email" id="email" name="email"><br>
-            </div>
-
-            <div class="item-double">
-              <h3>
-                <label for="feedback" id="feedback-lbl" class="feedback-label">We would love to hear your feedback!</label><br>
-                <textarea id="feedback" type="text" name="feedBackMessage" maxlength="300"></textarea>
-              </h3>
-            </div>
-
+            <label for="name" class="feedback-label">Name</label><br>
+              <input type="text" id="name" name="name"><br>
+            <label for="email" class="feedback-label">Email</label><br>
+              <input type="email" id="email" name="email"><br>
+            <label for="feedback" class="feedback-label">We would love to hear your feedback!</label><br>
+              <textarea id="feedback" type="text" name="feedBackMessage" maxlength="400" rows="5" cols="25"></textarea>
           </div>
           <div class="center">
             <button type="submit" class="btn">Submit</button>

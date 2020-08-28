@@ -33,7 +33,7 @@ function showInstructions() {
   })
 }
 
-// formats params for api request
+// formats params for API request
 function formatQueryParameters(params) {
   const queryItems = Object.keys(params)
   .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
@@ -47,7 +47,7 @@ function clearInputs() {
   $('#user-number-results').val("");
 }
 
-//renders api results to DOM
+//renders API results to DOM
 function renderResultsToDom(resultsObj) {
   $('.results-list').empty();
   const episodeNodes = [];
