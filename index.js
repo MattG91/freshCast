@@ -1,12 +1,10 @@
 // Global variables
 const searchEndpoint = 'https://tastedive.com/api/similar';
-const apiKey = '382162-freshCas-XQFB23BA'
+const apiKey = '382162-freshCas-XQFB23BA';
 
 
 
-
-
-// Handler functions
+// Handles the search button to get values and pass to function
 function searchResultsHandler() {
   $('.input-form').submit(e => {
     e.preventDefault();
@@ -19,16 +17,23 @@ function searchResultsHandler() {
 
 
 
-
-
-
 // Single purpose functions
+
+// toggles the navigation list for the app
 function displayNavList() {
   $('.fa-bars').on('click', () => {
-    $('.nav-list').toggleClass('hide')
-  })
+    $('.nav-list').slideToggle(250)
+  });
 } 
 
+// toggles the instructions for the app
+function showInstructions() {
+  $('#instructions-btn').on('click', () => {
+    $('.landing-message').slideToggle(250);
+  })
+}
+
+// formats params for api request
 function formatQueryParameters(params) {
   const queryItems = Object.keys(params)
   .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
@@ -36,17 +41,13 @@ function formatQueryParameters(params) {
   return queryItems.join("&");
 }
 
+// clears inputs on search
 function clearInputs() {
   $('#user-query').val("");
   $('#user-number-results').val("");
 }
 
-function showInstructions() {
-  $('#instructions-btn').on('click', () => {
-    $('.landing-message').toggleClass('hide');
-  })
-}
-
+//renders api results to DOM
 function renderResultsToDom(resultsObj) {
   $('.results-list').empty();
   const episodeNodes = [];
@@ -54,17 +55,17 @@ function renderResultsToDom(resultsObj) {
     const episode = renderEpisode(resultsObj.Similar.Results[i]);
     if (episode) {
       episodeNodes.push(episode);
-    }
+    };
   }
 
   $('.results-list').append(episodeNodes.join(''));
 }
 
+// builds HTML nodes to be rendered
 function renderEpisode(episode) {
   if (!episode.wTeaser && !episode.yUrl) {
     return null;
   }
-
   return `
     <div class='episode-container'>
       <div class='flex-item'>
@@ -78,6 +79,7 @@ function renderEpisode(episode) {
   `;
 }
 
+// call the API to get a JSON response
 function getSearchResults(query, number = 5) {
   const userSearch = '?q=' + query.split(' ').join("+") + '&';
   const params = {
@@ -87,13 +89,15 @@ function getSearchResults(query, number = 5) {
     k: apiKey
   };
   const PROXY = 'https://cors-anywhere.herokuapp.com/';
-  
   fetch(PROXY + searchEndpoint + userSearch + formatQueryParameters(params))
   .then(rawResponse => {
-    return rawResponse.json();
+    if (rawResponse.ok) {
+      return rawResponse.json();
+    } else {
+      throw new Error(message.statusText);
+    }
   })
   .then(response => {
-    console.log(response.Similar.Results);
     if (response.Similar.Results.length === 0) {
       $('.results-list').empty();
       $('.error-field').text('Looks like we couldent find your podcast :( Check your spelling and try again!').removeClass('hide');
@@ -104,9 +108,10 @@ function getSearchResults(query, number = 5) {
       renderResultsToDom(response);
     }
   })
+  .catch(error => {
+    alert(`Looks like something went wrong: ${error.message}`);
+  })
 }
-
-
 
 
 
