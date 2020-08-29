@@ -6,11 +6,11 @@ FRESHCAST
 
 ## Screenshots
 
-> When a user first loads the page, they will see the landing page
+> When a user first loads the page, they will see the landing screen
 
 ![landing page](freshCast-screenshots/landing-page.png)
 
-> If the user doesent enter a podcast or the podcast cant be found, they will get an error
+> If the user doesen't enter a podcast or the podcast cant be found, they will get an error
 
 ![error message](freshCast-screenshots/couldent-find-podcast.png)
 
@@ -37,4 +37,4 @@ FRESHCAST
 > * Jquery
 
 ## Link to live demo
-![live demo](
+- [live demo](https://mattg91.github.io/freshCast/)
