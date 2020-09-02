@@ -24,7 +24,7 @@ body {
   color: white;
 }
 
-h2, h3, li, .feedback-header {
+h2, li, h3, .feedback-header {
   font-family: 'Julius Sans One', sans-serif;
   font-size: calc(.9rem + 1vw);
 }
@@ -105,7 +105,8 @@ header ul {
   background-color: #58cabd;
 }
 
-input {
+input,
+form select {
   border-radius: 5px;
   margin-bottom: .5em;
 }
@@ -160,27 +161,6 @@ fieldset textarea {
 }
 
 /******************************* Media queries styles  */
-/* @media all and (mid-width: 1px) {
-  h2, h3, li, .feedback-header {
-    font-family: 'Julius Sans One', sans-serif;
-    font-size: 1.4em;
-  }
-  
-  p, label, button, legend {
-    font-family: 'Crimson Text', serif;
-    font-size: 1.2em;
-  }
-
-  h1 {
-    margin: .3em 0 0 .3em;
-    font-size: 5em;
-    font-family: 'Julius Sans One', sans-serif;
-    border-right: solid white .1em;
-    border-bottom: solid white .1em;
-    padding: 0 .3em .1em 0;
-    border-radius: 5px;
-  }  
-} */
 
 @media all and (min-width: 800px) {
   .episode-container {
@@ -203,3 +183,37 @@ fieldset textarea {
   .yt-frame {
     height: 90%;
   }
+
+  .fa-bars {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex !important;
+    flex-direction: row;
+  }
+
+  header {
+    display: flex;
+    padding: 0 1em;
+  }
+
+  header .nav-wrapper {
+    width: 25%;
+  }
+
+  header .nav-list {
+    display: flex;
+    width: 75%;
+    justify-content: flex-end;
+  }
+
+  header .nav-list ul {
+    list-style: none;
+    display: flex;
+  }
+
+  header .nav-list ul li:first-child {
+    margin-right: 1em;
+  }
+}

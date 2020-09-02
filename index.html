@@ -36,14 +36,18 @@
     </section>
 <!-- Area to take user input for search -->
     <section class="user-input-area center">
-        <form class="input-form">
-          <label for="user-query">Podcast</label><br>
-            <input id="user-query" type="text" required><br>
-          <label for="user-number-results">Number of results</label><br>
-            <input id="user-number-results" type="text" placeholder="5"><br>
-          <button class="search-btn btn" type="submit">Search</button>
-          <button class="hide btn" id="instructions-btn" type="button">Instructions</button>
-        </form>
+      <form class="input-form">
+        <label for="user-query">Podcast</label><br>
+          <input id="user-query" type="text" required><br>
+        <label for="user-number-results">Results</label>
+          <select id="user-number-results" name="user-number-results">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+          </select><br>
+        <button class="search-btn btn" type="submit">Search</button>
+        <button class="hide btn" id="instructions-btn" type="button">Instructions</button>
+      </form>
     </section>
 <!-- Where the search results are rendered -->
     <section class="results-area">

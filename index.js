@@ -44,7 +44,6 @@ function formatQueryParameters(params) {
 // clears inputs on search
 function clearInputs() {
   $('#user-query').val("");
-  $('#user-number-results').val("");
 }
 
 //renders API results to DOM
@@ -67,20 +66,20 @@ function renderEpisode(episode) {
     return null;
   }
   return `
-    <div class='episode-container'>
+    <li class='episode-container'>
       <div class='flex-item'>
-        <li>${episode.Name}</li>
+        <h3>${episode.Name}</h3>
         <p>${episode.wTeaser}</p>
       </div
       <div class='flex-item yt-frame'>
-        <iframe class="podcast-iframe" src="${episode.yUrl}" target='_blank'></iframe>
+        <iframe class="podcast-iframe" src="${episode.yUrl}"></iframe>
       </div>
-    </div>
+    </li>
   `;
 }
 
 // call the API to get a JSON response
-function getSearchResults(query, number = 5) {
+function getSearchResults(query, number) {
   const userSearch = '?q=' + query.split(' ').join("+") + '&';
   const params = {
     type: 'podcast',
@@ -100,7 +99,7 @@ function getSearchResults(query, number = 5) {
   .then(response => {
     if (response.Similar.Results.length === 0) {
       $('.results-list').empty();
-      $('.error-field').text('Looks like we couldent find your podcast :( Check your spelling and try again!').removeClass('hide');
+      $('.error-field').text(`Looks like we couldn't find your podcast. Check your spelling and try again!`).removeClass('hide');
     } else {
       $('.error-field').text('').addClass('hide');
       $('.landing-message').addClass('hide');
